@@ -1,0 +1,5 @@
+{
+  "editor.inlineSuggest.edits.experimental.enabled": true,
+  "editor.inlineSuggest.edits.experimental.onlyShowWhenCloseToCursor": true,
+  "editor.inlineSuggest.enabled": false
+}
