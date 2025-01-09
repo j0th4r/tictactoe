@@ -2,9 +2,13 @@ const displayController = (() => {
   const renderMessage = (message) => {
     document.querySelector("#message").innerHTML = message
   }
+  const requiredMessage = (message) => {
+    document.querySelector(".required").innerHTML = message
+  }
 
   return {
     renderMessage,
+    requiredMessage
   }
 })();
 
@@ -69,6 +73,12 @@ const Game = (() => {
     if (gameOver) {
       return;
     }
+    if(document.querySelector("#player1").value === "" || document.querySelector("#player2").value === "") {
+      displayController.requiredMessage("Please enter your names")
+      return;
+    }
+
+    displayController.requiredMessage("")
 
     let index = parseInt(event.target.id.split("-")[1]);
 
@@ -133,9 +143,18 @@ function checkForTie(board) {
 const restartButton = document.querySelector("#restart-btn")
 restartButton.addEventListener("click", () => {
   Game.restart();
+  document.querySelector("#player1").value = ""
+  document.querySelector("#player2").value = ""
 })
 
 const startButton = document.querySelector("#start-btn")
-startButton.addEventListener("click", () => {
-  Game.start();
+startButton.addEventListener("click", (event) => {
+  event.preventDefault()
+  if(document.querySelector("#player1").value !== "" && document.querySelector("#player2").value !== "") {
+    displayController.requiredMessage("");
+    Game.start();
+  } else {
+    displayController.requiredMessage("Please enter your names");
+  }
+  
 })

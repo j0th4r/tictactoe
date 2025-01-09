@@ -141,3 +141,11 @@ input[id=player2] {
   text-align: center;
   border-radius: 15px;
 }
+
+.required {
+  margin-top: 2rem;
+  font-family: "Outfit";
+  font-weight: bold;
+  font-size: 20px;
+  color: #A8BFC9;
+}
